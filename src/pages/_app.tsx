@@ -1,10 +1,15 @@
-import { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
+import React from 'react';
+import { AppProps } from 'next/app';
+import { Provider } from 'react-redux';
+import createStore from '../ducks/createStore';
+// import { ChakraProvider } from '@chakra-ui/react'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <ChakraProvider>
+    <Provider store={createStore()}>
       <Component {...pageProps} />
-    </ChakraProvider>
+    </Provider>
   )
 }
+
+export default MyApp;
